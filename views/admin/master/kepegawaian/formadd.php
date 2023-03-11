@@ -65,6 +65,7 @@ function submit(x) {
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Username</label>
+                            <input type="hidden" name="id_users" class="form-control">
                             <input type="text" class="form-control" name="username" required>
                         </div>
                     </div>
@@ -108,6 +109,7 @@ function submit(x) {
                             <label>Nama Lengkap</label>
                             <input type="hidden" name="idtxt" class="form-control">
                             <input type="text" class="form-control" name="nama" required>
+                            <input type="hidden" name="id_karyawan" class="form-control">
                             <small class="text-danger">*<span class="text-gray-800">nama lengkap dengan gelar</span></small>
                         </div>
                     </div>
@@ -178,8 +180,12 @@ function submit(x) {
                         </div>
                     </div>
                     <div class="col-md-12 float-right">
-                        <button type="submit" name="tambah" class="btn btn-primary float-right"><i class="fas fa-save"></i> Simpan</button>
-                        <button type="reset" name="batal" class="btn btn-danger float-left"><i class="fas fa-times"></i> Batal</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal"><i class="fas fa-times"></i>
+                        Batal</button>
+                    <button class="btn btn-primary float-right" type="submit" name="tambah"><i class="fas fa-save"></i>
+                        Tambah</button>
+                    <button class="btn btn-primary float-right" type="submit" name="ubah"><i class="fas fa-save"></i>
+                        Ubah</button>
                     </div>
                 </div>
             </form>

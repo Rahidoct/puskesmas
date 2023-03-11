@@ -1,4 +1,5 @@
 <!-- Page Heading -->
+<div class="container-fluid">
 <div class="d-sm-flex align-items-center justify-content-between mb-2 border-bottom border-success">
     <h1 class="h3 mb-0 text-gray-800">Edit Karyawan</h1>
 </div>
@@ -16,10 +17,55 @@ $sql = mysqli_query($con, "SELECT * FROM karyawan where id_karyawan = '$id' ");
 $r = mysqli_fetch_assoc($sql);
 ?>
 <div class="card mt-3 mb-4">
-  <div class="card-header bg-primary text-white">
-    Form Edit Pegawai
-  </div>
-  <div class="card-body">
+  <div class="card mt-3 mb-4 border-bottom-secondary">
+        <div class="card-header bg-primary text-white">
+            <h5 class="modal-title"><strong></strong></h5>
+        </div>
+        <div class="card-body">
+            <form method="post" id="formadd" action="<?=base_url();?>process/users.php">
+                <div class="d-sm-flex align-items-center justify-content-between mb-2 border-bottom border-success">
+                    <h5 class="h4 mb-0 text-gray-800">Registrasi User</h5>
+                </div>            
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="hidden" name="id_users" class="form-control">
+                            <input type="text" class="form-control" name="username" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" name="password" aria-describedby="passwordHelp">
+                            <small id="passwordHelp" class="form-text" style="color:red;">Biarkan kosong jika tidak ingin merubah password</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Hak Akses</label>
+                            <select name="level" class="form-control" required>
+                                <option>--pilih jenis akses--</option>
+                                <option value="user">Pegawai</option>
+                                <option value="admin">Kasubag TU</option>
+                                <option value="asset">Pengelolah Aset</option>
+                                <option value="bendahara">Bendahara</option>
+                                <option value="kepala_puskesmas">Kepala Puskesmas</option>
+                                <option value="apoteker">Apoteker</option>
+                                <option value="antrian">Pendaftaran</option>
+                                <option value="rekam_medis">Rekam Medis</option>
+                            </select>
+                            <small class="text-danger">*<span class="text-gray-800">hak akses adalah sistem yang boleh diakses oleh user tersebut</span></small>
+                        </div>
+                    </div>
+                </div>
+              <div class="card-body">
     <form method="POST" action="">
        <div class="d-sm-flex align-items-center justify-content-between mb-2 border-bottom border-success">
         <h5 class="h4 mb-0 text-gray-800">Data Pegawai</h5>
@@ -113,6 +159,7 @@ $r = mysqli_fetch_assoc($sql);
       <a href="?beranda_admin" name="batal" class="btn btn-danger">Batal</a>
     </form>
   </div>
+</div>
 </div>
 
 <?php

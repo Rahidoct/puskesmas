@@ -150,7 +150,10 @@
                                 <td><?= $data['status_pegawai'] ?></td>
                                 <td><?= "Rp." . number_format($data['gaji']) ?></td>
                                 <td>
-                                    <?= ($_SESSION['level'] == 'admin') ? "<a href='?edit_data_pegawai' class='badge badge-warning'>Edit</a>" : "-" ?>
+                                    <a href="#penggunaModal" data-toggle="modal" onclick="submit(<?=$row['id_users'];?>)"
+                                        class="btn btn-sm btn-circle btn-info"><i class="fas fa-edit"></i></a>
+                                    <a href="<?=base_url();?>/process/users.php?act=<?=encrypt('delete');?>&id=<?=encrypt($row['id_users']);?>"
+                                        class="btn btn-sm btn-circle btn-danger btn-hapus"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
                         <?php
