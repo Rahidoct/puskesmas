@@ -1,0 +1,64 @@
+##catatan
+1. membuat halaman crud input karyawan baru
+2. memperbaiki error input izin karyawan
+3. memperbaiki error area scan absensi
+
+//logbook harian
+
+//membuat database puskesmas diphpmyadmin                                   (disable)
+1. membuat tabel user untuk login multi usernya                                     (selesai)
+2. mengisi data role user pada database                                             (selesai)
+3. membuat koneksi database diphp                                                   (selesai)
+4. membuat halaman login role user                                                  (selesai)
+5. membuat authentifikasi untuk mengetahui siapa yang sedang login                  (selesai)
+
+//membuat template halaman yang akan ditampilkan sistem                     (aktif)
+1. membuat file php header, topbar, dan footer                                      (selesai)
+2. membuat page role multi user                                                     (on proses)
+3. membuat sidebar role multi user                                                  (on proses)
+
+//membuat tampilan halaman admin                                            (aktif)
+1. membuat tampilan sidebar menu                                                    (selesai)
+2. membuat halaman beranda                                                          (selesai)
+3. membuat database untuk menu admin                                                (selesai)
+4. membuat CRUD jabatan pegawai                                                     (selesai)
+5. membuat CRUD input user karyawan baru                                            (on proses)
+6. membuat halaman info absensi                                                     (selesai)
+7. membuat halaman rekap absensi                                                    (selesai)
+8. membuat menu input izin pegawai                                                  (on proses)
+9. membuat halaman area scan absen pegawai                                          (on proses)
+10. membuat halaman kelompok data pegawai negeri									(selesai)
+11. membuat halaman kelompok data pegawai pppk										(selesai)
+12. membuat halaman kelompok data pegawai honorer									(selesai)
+13. membuat halaman kelompok data pegawai Resign									(selesai)
+14. 
+
+//membuat tampilan halaman antrian                                          (disable)
+1. membuat tampilan sidebar menu
+2. membuat halaman beranda
+
+//membuat tampilan halaman rekam medis                                      (disable)
+1. membuat tampilan sidebar menu
+2. membuat halaman beranda
+
+//membuat tampilan halaman apoteker                                         (disable)
+1. membuat tampilan sidebar menu
+2. membuat halaman beranda
+
+//membuat tampilan halaman pengelolah asset                                 (aktif)
+1. membuat tampilan sidebar menu                                                    (selesai)
+2. membuat halaman beranda                                                          (selesai)
+3. membuat crud halaman barang masuk                                                (selesai)
+4. membuat crud halaman barang keluar                                               (selesai)
+5. membuat print halaman laporan                                                    (selesai)
+6. membuat crud halaman master                                                      (selesai)
+7. membuat crud halaman hak akses pengguna                                          (selesai)
+8. membuat crud halaman inventaris aset tetap                                       (on proses)
+
+//membuat tampilan halaman pimpinan                                         (disable)
+1. membuat tampilan sidebar menu
+2. membuat halaman beranda
+
+//membuat tampilan halaman usernya                                          (disable)
+1. membuat tampilan sidebar menu
+2. membuat halaman beranda
