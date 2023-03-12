@@ -1,5 +1,5 @@
 <?php hakAkses(['admin']) ?>
-<script>
+<!-- <script>
 function submit(x) {
     if (x == 'add') {
         $('[name="username"]').val("");
@@ -37,7 +37,7 @@ function submit(x) {
         });
     }
 }
-</script>
+</script> -->
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
@@ -184,8 +184,6 @@ function submit(x) {
                         Batal</button>
                     <button class="btn btn-primary float-right" type="submit" name="tambah"><i class="fas fa-save"></i>
                         Tambah</button>
-                    <button class="btn btn-primary float-right" type="submit" name="ubah"><i class="fas fa-save"></i>
-                        Ubah</button>
                     </div>
                 </div>
             </form>

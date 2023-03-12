@@ -8,15 +8,24 @@ if(isset($_POST['tambah'])){
     $tgl_diterima = $_POST['tgl_diterima'];
     $perihal = $_POST['perihal'];
     $id_penerima = $_POST['penerima'];
-    $surat = $_FILES['surat']['name'];
 
     $surat = upload_out();
-    $insert = mysqli_query($con,"INSERT INTO surat_keluar (no_surat, tgl_surat, tgl_diterima, perihal, id_penerima, file) VALUES ('$no_surat','$tgl_surat','$tgl_diterima','$perihal','$id_penerima','$surat')") or die (mysqli_error($con));
-    if($insert){
-        $success = 'Berhasil menambahkan data surat keluar';
-    }else{
-        $error = 'Gagal menambahkan data surat keluar';
+
+    //cek apakah yang diupload itu file dokumen atau pdf
+    //jika bukan munculkan pesan error
+    if ($surat == 1) {
+        $error = 'Gagal menambahkan data surat keluar yang kamu upload bukan dokumen atau file :(';    
     }
+    //jika file terlalu besar maka munculkan pesan error
+    elseif($surat == 2) {
+        $error = 'Gagal menambahkan data surat keluar ukuran file terlalu besar :(';
+    }
+    //jika benar maka munculkan pesan success
+    else{
+        $insert = mysqli_query($con,"INSERT INTO surat_keluar (no_surat, tgl_surat, tgl_diterima, perihal, id_penerima, file) VALUES ('$no_surat','$tgl_surat','$tgl_diterima','$perihal','$id_penerima','$surat')") or die (mysqli_error($con));
+        $success = 'Berhasil menambahkan data surat keluar';
+    }
+
     $_SESSION['success'] = $success;
     $_SESSION['error'] = $error;
     header('Location:../?surat_keluar');

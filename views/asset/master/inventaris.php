@@ -78,24 +78,24 @@ function submit(x) {
                     <tbody>
                     	<?php 
                         $n=1;
-                        $query = mysqli_query($con,"SELECT * FROM inventaris INNER JOIN merek ON inventaris.idmerek = merek.idmerek
-                        													 INNER JOIN kategori ON inventaris.idkategori = kategori.idkategori
-                        													 INNER JOIN karyawan ON inventaris.id_karyawan = karyawan.id_karyawan");
+                        $query = mysqli_query($con,"SELECT * FROM inventaris JOIN merek ON inventaris.idmerek = merek.idmerek
+                                                                             JOIN kategori ON inventaris.idkategori = kategori.idkategori
+                                                                             JOIN karyawan ON inventaris.id_karyawan = karyawan.id_karyawan") 
+                                                                             or die(mysqli_error($con));
                         while($data = mysqli_fetch_array($query)):
-                        	var_dump($query);
                         ?>
                         <tr>
                             <td><?= $n++; ?></td>
                             <td><?= $data['kode']; ?></td>
                             <td><?= $data['nama_aset']; ?></td>
-                            <td><?= $data['nama_merek']; ?></td>
+                            <td><?= $data['idmerek']; ?></td>
                             <td><?= $data['tahun']; ?></td>
-                            <td><?= $data['nama_kategori']; ?></td>
+                            <td><?= $data['idkategori']; ?></td>
                             <td><?= "Rp." . number_format($data['harga']); ?></td>
                             <td><?= $data['dana']; ?></td>
                             <td><?= $data['keterangan']; ?></td>
-                            <td><?= $data['lokasi']; ?></td>
-                            <td><?= $data['id_karyawan']; ?></td>
+                            <td><?= $data['lokasi_aset']; ?></td>
+                            <td><?= $data['nama']; ?></td>
                             <td>
                                 <a href="#barangModal" data-toggle="modal" onclick="submit(<?=$row['idbarang'];?>)"
                                     class="btn btn-sm btn-circle btn-info"><i class="fas fa-edit"></i></a>

@@ -150,6 +150,7 @@
                 $views = 'views/asset/index.php';
             }
         }
+        
         // jika yang login bendahara maka tampilkan halaman bendahara
         else if($_SESSION["level"] == "bendahara"){
             if(isset($_GET['beranda_bendahara_puskesmas'])){

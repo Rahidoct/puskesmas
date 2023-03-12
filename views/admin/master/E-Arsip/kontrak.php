@@ -154,14 +154,21 @@ function submit(x) {
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="no_kontrak">Nomor <span class="text-danger">*</span></label>
+                                <input type="hidden" name="no_kontrak" class="form-control">
+                                <input type="text" class="form-control" id="no_kontrak" name="no_kontrak" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="tgl_kontrak">Tanggal kontrak <span class="text-danger">*</span></label>
                                 <input type="hidden" name="tgl_kontrak" class="form-control">
                                 <input type="date" class="form-control" id="tgl_kontrak" name="tgl_kontrak" required>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="tgl_selesai">Tanggal Selesai <span class="text-danger">*</span></label>
                                 <input type="hidden" name="tgl_selesai" class="form-control">

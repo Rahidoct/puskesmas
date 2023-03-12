@@ -41,7 +41,7 @@
 
         ?>
         <!-- card pns -->
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-xl-3 col-md-6 col-sm-6 mb-4">
             <div class="card bg-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -59,7 +59,7 @@
         </div>
 
         <!-- card pppk -->
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-xl-3 col-md-6 col-sm-6 mb-4">
             <div class="card bg-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -77,7 +77,7 @@
         </div>
 
         <!-- card honorer -->
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-xl-3 col-md-6 col-sm-6 mb-4">
             <div class="card bg-warning shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -95,7 +95,7 @@
         </div>
 
         <!-- card resign -->
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-xl-3 col-md-6 col-sm-6 mb-4">
             <div class="card bg-danger shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -150,7 +150,7 @@
                                 <td><?= $data['status_pegawai'] ?></td>
                                 <td><?= "Rp." . number_format($data['gaji']) ?></td>
                                 <td>
-                                    <a href="#penggunaModal" data-toggle="modal" onclick="submit(<?=$row['id_users'];?>)"
+                                    <a href="?edit_data_pegawai" onclick="submit(<?=$row['id_users'];?>)"
                                         class="btn btn-sm btn-circle btn-info"><i class="fas fa-edit"></i></a>
                                     <a href="<?=base_url();?>/process/users.php?act=<?=encrypt('delete');?>&id=<?=encrypt($row['id_users']);?>"
                                         class="btn btn-sm btn-circle btn-danger btn-hapus"><i class="fas fa-trash"></i></a>

@@ -10,12 +10,6 @@
         <span aria-hidden="true">×</span>
     </button>
 </div>
-
-<?php 
-$id = $_GET['id'];
-$sql = mysqli_query($con, "SELECT * FROM karyawan where id_karyawan = '$id' ");
-$r = mysqli_fetch_assoc($sql);
-?>
 <div class="card mt-3 mb-4">
   <div class="card mt-3 mb-4 border-bottom-secondary">
         <div class="card-header bg-primary text-white">
@@ -75,17 +69,17 @@ $r = mysqli_fetch_assoc($sql);
         <div class="col-md-12">
           <div class="form-group">
             <label for="nama">Nama Karyawan</label>
-            <input type="text" class="form-control" id="nama" name="nama" placeholder="nama" value="<?=$r['nama_karyawan']?>">
+            <input type="text" class="form-control" id="nama" name="nama" placeholder="nama" value="<?=$nama['nama']?>">
             <small class="text-danger">*<span class="text-gray-800">ketik nama dengan gelar</span></small>
           </div>
           <div class="form-group">
             <label for="nip">NIP</label>
-            <input type="text" class="form-control" id="nip" name="nip" placeholder="ketik nomor nip.." value="<?=$r['nip']?>">
+            <input type="text" class="form-control" id="nip" name="nip" placeholder="ketik nomor nip.." value="<?=$nip['nip']?>">
             <small class="text-danger">*<span class="text-gray-800">kosongkan jika tidak memiliki NIP</span></small>
           </div>
           <div class="form-group">
             <label for="hp">No Hp</label>
-            <input type="number" class="form-control" id="hp" name="hp" placeholder="ketik nomor hp.." value="<?=$r['hp']?>">
+            <input type="number" class="form-control" id="hp" name="hp" placeholder="ketik nomor hp.." value="<?=$no_hp['no_hp']?>">
           </div>
 
           <div class="form-group">
@@ -161,30 +155,3 @@ $r = mysqli_fetch_assoc($sql);
   </div>
 </div>
 </div>
-
-<?php
-if(isset($_POST['bsimpan'])){
-   
-  // $nip = ($r['status_pegawai']=='PNS')?$_POST['nip']: '';
-
-  $ubah = mysqli_query($con, "UPDATE karyawan SET nama_karyawan = '$_POST[nama]', alamat = '$_POST[alamat]', mulai_kerja = '$_POST[mkerja]', umur = '$_POST[umur]', id_posisi = '$_POST[posisi]', status_pegawai = '$_POST[status]', gaji = '$_POST[gaji]', nip = '$_POST[nip]', hp = '$_POST[hp]' where id_karyawan = '$id'")or die($con);
-
-// var_dump($ubah);
-// exit;
- 
-    //jika berhasil
-    if($ubah){
-    //maka keluar informasi
-    echo "<script>
-      alert('Data Departemen Berhasil Diubah');
-      document.location='?beranda_admin';
-      </script>"; 
-    }else{
-      echo "<script>
-      alert('Data Departemen Gagal Diubah');
-      document.location='?beranda_admin';
-      </script>"; 
-    }
-
-  }
-?>

@@ -25,20 +25,19 @@
     </div>
 
     <?php
-        // Hitung PNS
-        // $sqlAset = mysqli_query($con, "SELECT count(*) as PNS FROM inventaris WHERE status_pegawai = 'PNS'");
-        // $cekAset = mysqli_fetch_assoc($sqlAset);
-        // // P3K
-        $sqlIn = mysqli_query($con, "SELECT count(*) as idbarang_masuk FROM barang_masuk WHERE barang_id = 'barang_id'");
+        // Hitung data aktiva atau aset
+        $sqlAset = mysqli_query($con, "SELECT count(*) as id_aset FROM inventaris WHERE id_aset = ''");
+        $cekAset = mysqli_fetch_assoc($sqlAset);
+        // Hitung barang masuk
+        $sqlIn = mysqli_query($con, "SELECT COUNT(*) AS jumlah FROM barang_masuk WHERE jumlah > 0 GROUP BY MONTH(tanggal)");
         $cekIn = mysqli_fetch_assoc($sqlIn);
-        // Honor
-        $sqlOut = mysqli_query($con, "SELECT count(*) as idbarang_keluar FROM barang_keluar WHERE barang_id = 'barang_id'");
+        // Hitung barang keluar
+        $sqlOut = mysqli_query($con, "SELECT COUNT(*) AS jumlah FROM barang_keluar WHERE jumlah > 0 GROUP BY MONTH(tanggal)");
         $cekOut = mysqli_fetch_assoc($sqlOut);
-        // Resign
-        $sqlStok = mysqli_query($con, "SELECT count(*) as idbarang FROM barang WHERE idbarang = 'idbarang'");
+        // Hitung sisa stok barang
+        $sqlStok = mysqli_query($con, "SELECT COUNT(*) AS stok FROM barang WHERE stok > 0");
         $cekStok = mysqli_fetch_assoc($sqlStok);
-
-        ?>
+    ?>
     <!-- row laporan stok barang dan aset -->
     <div class="row">
         <!-- aset tetap -->
@@ -47,9 +46,9 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <a class="text-xs font-weight-bold text-white text-uppercase mb-1" href="?halaman=pns">
+                            <a class="text-xs font-weight-bold text-white text-uppercase mb-1">
                                 Aset Tetap</a>
-                            <div class="h5 mb-0 font-weight-bold text-white">120</div>
+                            <div class="h5 mb-0 font-weight-bold text-white"><?= $cekAset['id_aset'] ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fa-solid fa-house-circle-check fa-2x text-white"></i>
@@ -67,7 +66,7 @@
                         <div class="col mr-2">
                             <a class="text-xs font-weight-bold text-white text-uppercase mb-1">
                                 Barang Masuk</a>
-                            <div class="h5 mb-0 font-weight-bold text-white"><?= $cekIn['idbarang_masuk'] ?></div>
+                            <div class="h5 mb-0 font-weight-bold text-white"><?= $cekIn['jumlah'] ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fa-solid fa-people-carry-box fa-2x text-white"></i>
@@ -85,7 +84,7 @@
                         <div class="col mr-2">
                             <a class="text-xs font-weight-bold text-white text-uppercase mb-1">
                                 Barang Keluar</a>
-                            <div class="h5 mb-0 font-weight-bold text-white"><?= $cekOut['idbarang_keluar'] ?></div>
+                            <div class="h5 mb-0 font-weight-bold text-white"><?= $cekOut['jumlah'] ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fa-solid fa-truck-ramp-box fa-2x text-white"></i>
@@ -103,7 +102,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-white text-uppercase mb-1">
                                 Sisa Stok Barang</div>
-                            <div class="h5 mb-0 font-weight-bold text-white"><?= $cekStok['idbarang'] ?></div>
+                            <div class="h5 mb-0 font-weight-bold text-white"><?= $cekStok['stok'] ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fa-solid fa-layer-group fa-2x text-white"></i>

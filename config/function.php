@@ -143,19 +143,6 @@ function decrypt($str) {
 return base64_decode($str);
 }
 
-//persiapan function untuk upload file
-function set_error_message($error_message) {
-    if (!empty($error_message)) {
-        $_SESSION['error'] = $error_message;
-    }
-}
-
-function unset_error_message() {
-    if (isset($_SESSION['error'])) {
-        unset($_SESSION['error']);
-    }
-}
-
 function upload_in()
 {
     //deklarasikan variabel kebutuhan
@@ -169,25 +156,19 @@ function upload_in()
     $eksfile      = explode('.', $namafile);
     $eksfile      = strtolower(end($eksfile));
 
+    //jika bukan munculkan pesan error
     if (!$namafile || !in_array($eksfile, $eksfilevalid)) {
-        $error = 'Sayang sekali yang kamu upload bukan dokumen atau file :(';
-        set_error_message($error);
-        return false;
+        return 1;
     }
-
-    //cek jika ukuran file terlalu besar 
-    if ($ukuranfile && $ukuranfile > 1000000) {
-        $error = 'Yah..! Ukuran file dokumen kamu terlalu besar.';
-        set_error_message($error);
-        return false;
+    //jika file terlalu besar maka munculkan pesan error
+    elseif($ukuranfile > 1000000){
+        return 2; 
     }
 
     //jika lolos pengecekkan, file siap diupload
-    //generate nama file baru
-    
+    //generate nama file baru    
     $namafilebaru = uniqid() . '.' . $eksfile;
     move_uploaded_file($tmpname, '../assets/file/surat_masuk/' . $namafilebaru);
-    unset_error_message();
     return $namafilebaru;
 }
 
@@ -204,25 +185,19 @@ function upload_out()
     $eksfile      = explode('.', $namafile);
     $eksfile      = strtolower(end($eksfile));
 
+    //jika bukan munculkan pesan error
     if (!$namafile || !in_array($eksfile, $eksfilevalid)) {
-        $error = 'Sayang sekali yang kamu upload bukan dokumen atau file :(';
-        set_error_message($error);
-        return false;
+        return 1;
     }
-
-    //cek jika ukuran file terlalu besar 
-    if ($ukuranfile && $ukuranfile > 1000000) {
-        $error = 'Yah..! Ukuran file dokumen kamu terlalu besar.';
-        set_error_message($error);
-        return false;
+    //jika file terlalu besar maka munculkan pesan error
+    elseif($ukuranfile > 1000000){
+        return 2; 
     }
     
     //jika lolos pengecekkan, file siap diupload
     //generate nama file baru
-
     $namafilebaru = uniqid() . '.' . $eksfile;
     move_uploaded_file($tmpname, '../assets/file/surat_keluar/' . $namafilebaru);
-    unset_error_message();
     return $namafilebaru;
 }
 
@@ -239,25 +214,19 @@ function upload_kontrak()
     $eksfile      = explode('.', $namafile);
     $eksfile      = strtolower(end($eksfile));
 
+    //jika bukan munculkan pesan error
     if (!$namafile || !in_array($eksfile, $eksfilevalid)) {
-        $error = 'Sayang sekali yang kamu upload bukan dokumen atau file :(';
-        set_error_message($error);
-        return false;
+        return 1;
     }
-
-    //cek jika ukuran file terlalu besar 
-    if ($ukuranfile && $ukuranfile > 1000000) {
-        $error = 'Yah..! Ukuran file dokumen kamu terlalu besar.';
-        set_error_message($error);
-        return false;
+    //jika file terlalu besar maka munculkan pesan error
+    elseif($ukuranfile > 1000000){
+        return 2; 
     }
     
     //jika lolos pengecekkan, file siap diupload
     //generate nama file baru
-
     $namafilebaru = uniqid() . '.' . $eksfile;
     move_uploaded_file($tmpname, '../assets/file/kontrak_kerja/' . $namafilebaru);
-    unset_error_message();
     return $namafilebaru;
 }
 
@@ -275,30 +244,26 @@ function upload_foto()
     $eksfile      = explode('.', $namafile);
     $eksfile      = strtolower(end($eksfile));
 
-    // var_dump($namafile);
-    if (!$namafile || !in_array($eksfile, $eksfilevalid)) {
-        $error = 'Sayang sekali yang anda Upload bukan foto atau gambar...!';
-        set_error_message($error);
-        return false;
-    }
+    //cek apakah yang diupload adalah dokumen surat
+    $eksfilevalid = ['pdf', 'docx'];
+    $eksfile      = explode('.', $namafile);
+    $eksfile      = strtolower(end($eksfile));
 
-    //cek jika ukuran file terlalu besar 
-    if ($ukuranfile && $ukuranfile > 1000000) {
-        $error = 'Yah..! Ukuran file gambar atau foto kamu terlalu besar.';
-        set_error_message($error);
-        return false;
+    //jika bukan munculkan pesan error
+    if (!$namafile || !in_array($eksfile, $eksfilevalid)) {
+        return 1;
+    }
+    //jika file terlalu besar maka munculkan pesan error
+    elseif($ukuranfile > 1000000){
+        return 2; 
     }
     
     //jika lolos pengecekkan, file siap diupload
     //generate nama file baru
-
     $namafilebaru = uniqid() . '.' . $eksfile;
     move_uploaded_file($tmpname, '../assets/file/profil_karyawan/' . $namafilebaru);
-    unset_error_message();
     return $namafilebaru;
-
 }
-
 
 function randID()
 {
