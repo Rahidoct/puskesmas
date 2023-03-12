@@ -27,6 +27,7 @@ if(isset($_POST['cek_login'])){
                     $_SESSION['username'] = $data['username'];
                     $_SESSION['fullname'] = $data['nama'];
                     $_SESSION['level'] = $data['level'];
+                    $_SESSION['success'] = 'Login berhasil';
                     header("Location:".$base_url);
                     exit;
                 }else{
@@ -38,7 +39,7 @@ if(isset($_POST['cek_login'])){
             $error= 'Sepertinya username kamu tidak terdaftar. :(';
         }
     }
-    $_SESSION['error'] = $error;
+    $_SESSION['error'] = $error;    
 }
 
 ?>
