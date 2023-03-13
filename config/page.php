@@ -24,6 +24,10 @@
             else if(isset($_GET['logAbsen'])){
                 $views = 'process/logAbsen.php';
             }
+            else if(isset($_GET['info_absen'])){
+                $absensi = $info_absen = true;
+                $views = 'views/index.php';
+            }
             else if(isset($_GET['form_izin'])){
                 $absensi = $form_izin = true;
                 $views = 'views/admin/master/absensi/form_izin.php';

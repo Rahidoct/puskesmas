@@ -122,9 +122,10 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table" id="dataTable" width="100%" cellspacing="0">
+                <table cellspacing="0" id="example" class="table display responsive" style="width:100%">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Posisi</th>
                             <th scope="col">Umur</th>
@@ -136,6 +137,7 @@
                     </thead>
                     <tbody class="table-group-divider">
                         <?php
+                        $n=1;
                         //    Get All Karyawan
                         $mysql = mysqli_query($con, "SELECT * FROM karyawan INNER JOIN posisi ON karyawan.id_posisi = posisi.id_posisi 
                                                                             INNER JOIN users ON karyawan.id_users = users.id_users");
@@ -143,6 +145,7 @@
                         //    var_dump($mysql);
                         ?>
                             <tr>
+                                <td><?= $n++; ?></td>
                                 <td><?= $data['nama'] ?></td>
                                 <td><?= $data['nama_posisi'] ?></td>
                                 <td><?= $data['umur'] ?></td>
@@ -150,10 +153,14 @@
                                 <td><?= $data['status_pegawai'] ?></td>
                                 <td><?= "Rp." . number_format($data['gaji']) ?></td>
                                 <td>
-                                    <a href="?edit_data_pegawai" onclick="submit(<?=$row['id_users'];?>)"
-                                        class="btn btn-sm btn-circle btn-info"><i class="fas fa-edit"></i></a>
-                                    <a href="<?=base_url();?>/process/users.php?act=<?=encrypt('delete');?>&id=<?=encrypt($row['id_users']);?>"
-                                        class="btn btn-sm btn-circle btn-danger btn-hapus"><i class="fas fa-trash"></i></a>
+                                    <small class="btn btn-sm">
+                                        <a href="<?=base_url();?>/process/users.php?act=<?=encrypt('delete');?>&id=<?=encrypt($row['id_users']);?>" class="btn btn-danger btn-icon-split btn-sm btn-hapus">
+                                            <span class="icon text-white">
+                                                <i class="fas fa-right-from-bracket"></i>
+                                            </span>
+                                            <span class="text">Resign</span>
+                                        </a>
+                                    </small>
                                 </td>
                             </tr>
                         <?php

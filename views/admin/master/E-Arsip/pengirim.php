@@ -25,7 +25,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <small><table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                <small><table cellspacing="0" id="example" class="table display responsive" style="width:100%">
                     <thead class="bg-success text-white">
                         <tr>
                             <th width="20">NO</th>

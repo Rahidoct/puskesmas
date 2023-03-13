@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-2 border-bottom border-success">
-        <h1 class="h3 mb-0 text-gray-800">Data Nominatif Pegawai Resign</h1>
+        <h1 class="h3 mb-0 text-gray-800">Data Nominatif Pegawai Resign / Habis Kontrak</h1>
     </div>
     <p class="mb-4 text-black-50-400">Pegawai Resign | UPTD Puskesmas Bangodua </p>
     <div class="alert alert-info alert-dismissible fade show" role="alert">
@@ -36,7 +36,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table cellspacing="0" id="example" class="table display responsive" style="width:100%">
                     <thead class="alert-success text-gray-800">
                         <tr>
                             <th>Name</th>

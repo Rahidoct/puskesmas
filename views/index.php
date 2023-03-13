@@ -126,9 +126,10 @@
         </div>
         <div class="card-body">
             <div class="table-responsive table-sm">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table cellspacing="0" id="example" class="table display responsive" style="width:100%">
                     <thead class="alert-success text-gray-800">
                         <tr>
+                            <th>#</th>
                             <th>Nama</th>
                             <th>Posisi</th>
                             <th>Status</th>
@@ -139,6 +140,7 @@
                     </thead>
                     <tbody>
                     <?php
+                    $n=1;
                     $absenJoin = mysqli_query($con, "SELECT * FROM log_absensi INNER JOIN karyawan ON log_absensi.id_karyawan = karyawan.id_karyawan
                                 INNER JOIN users ON karyawan.id_users = users.id_users
                                 INNER JOIN posisi ON karyawan.id_posisi = posisi.id_posisi 
@@ -146,6 +148,7 @@
                                 while ($data = mysqli_fetch_assoc($absenJoin)) {
                     ?>
                         <tr>
+                            <td><?= $n++; ?></td>
                             <td><?= $data['nama'] ?></td>
                             <td><?= $data['nama_posisi'] ?> </td>
                             <td><?= $data['status_pegawai'] ?> </td>

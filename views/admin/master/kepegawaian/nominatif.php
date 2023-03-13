@@ -44,9 +44,10 @@
 	  </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table cellspacing="0" id="example" class="table display responsive" style="width:100%">
                     <thead class="alert-success text-gray-800">
                         <tr>
+                            <th>#</th>
                             <th>Name</th>
                             <th>Posisi</th>
                             <th>Lokasi</th>
@@ -58,8 +59,10 @@
                     </thead>
                     <tbody>
                         <?php
+                        $n=1;
                         while ($r = mysqli_fetch_assoc($data)) { ?>
                             <tr>
+                                <th><?= $n++; ?></th>
                                 <td><?= $r['nama'] ?></td>
                                 <td><?= $r['nama_posisi'] ?></td>
                                 <td><?= $r['alamat'] ?></td>
@@ -69,8 +72,8 @@
                                 <td>
                                     <form method="post" action="">
                                         <input type="hidden" name="id" value="<?= $r['id_karyawan'] ?>">
-                                        <input type="hidden" name="status" value="Resign">
-                                        <input class="btn btn-danger btn-sm" type="submit" name="submitted" value="Resign">
+                                        <input type="hidden" name="status" value="mutasi">
+                                        <input class="btn btn-danger btn-sm" type="submit" name="submitted" value="Mutasi">
                                     </form>
                                 </td>
                             </tr>

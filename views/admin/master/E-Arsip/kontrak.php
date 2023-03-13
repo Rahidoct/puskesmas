@@ -64,7 +64,7 @@ function submit(x) {
         <div class="card-body">
             <div class="table-responsive">
                 <small>
-                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                <table cellspacing="0" id="example" class="table display responsive" style="width:100%">
                     <thead>
                         <tr>
                             <th width="20">NO</th>

@@ -15,33 +15,33 @@ if(isset($_POST['cek_login'])){
 
     // cek apakah pengguna sudah memasukan username dan password?
     if(empty($username) || empty($password)){
-        // jika belum maka tampilkan pesan
-        $error = 'Harap isi username dan password';
+    // jika belum maka tampilkan pesan
+    $error = 'Harap isi username dan password';
+}else{
+    // menyeleksi data user dengan username yang sesuai
+    $user = mysqli_query($con,"SELECT * FROM users INNER JOIN karyawan ON karyawan.id_users = users.id_users WHERE username='$username'") or die(mysqli_error($con));
+    if(mysqli_num_rows($user)!=0){
+        $data = mysqli_fetch_array($user);
+            if(password_verify($password,$data['password'])){
+                $_SESSION['id_users'] = $data['id_users'];
+                $_SESSION['username'] = $data['username'];
+                $_SESSION['fullname'] = $data['nama'];
+                $_SESSION['level'] = $data['level'];
+                $_SESSION['success'] = 'Login berhasil';
+                header("Location:".$base_url);
+                exit;
+            }else{
+                // jika password salah maka tampilkan pesan
+                $error = 'Kayaknya password kamu salah deh. !!';
+            }
     }else{
-        // menyeleksi data user dengan username yang sesuai
-        $user = mysqli_query($con,"SELECT * FROM users INNER JOIN karyawan ON karyawan.id_users = users.id_users WHERE username='$username'") or die(mysqli_error($con));
-        if(mysqli_num_rows($user)!=0){
-            $data = mysqli_fetch_array($user);
-                if(password_verify($password,$data['password'])){
-                    $_SESSION['id_users'] = $data['id_users'];
-                    $_SESSION['username'] = $data['username'];
-                    $_SESSION['fullname'] = $data['nama'];
-                    $_SESSION['level'] = $data['level'];
-                    $_SESSION['success'] = 'Login berhasil';
-                    header("Location:".$base_url);
-                    exit;
-                }else{
-                    // jika password salah maka tampilkan pesan
-                    $error = 'Kayaknya password kamu salah deh. !!';
-                }
-        }else{
-            // jika username salah maka tampilkan pesan
-            $error= 'Sepertinya username kamu tidak terdaftar. :(';
-        }
+        // jika username salah maka tampilkan pesan
+        $error= 'Sepertinya username kamu tidak terdaftar. :(';
     }
-    $_SESSION['error'] = $error;    
 }
+$_SESSION['error'] = $error;
 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

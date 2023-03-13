@@ -25,14 +25,16 @@
 <script src="<?=base_url();?>assets/js/sb-admin-2.min.js"></script>
 
 <!-- Page level plugins -->
-<script src="<?=base_url();?>assets/vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="<?=base_url();?>assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="<?=base_url();?>assets/js/jquery-3.5.1.min.js"></script>
+<script src="<?=base_url();?>assets/js/jquery.dataTables.min.js"></script>
+<script src="<?=base_url();?>assets/js/dataTables.responsive.min.js"></script>
+<script src="<?=base_url();?>assets/js/dataTables.bootstrap4.min.js"></script>
 <script src="<?=base_url();?>assets/vendor/jquery-mask/jquery-mask.min.js"></script>
 <script src="<?=base_url();?>assets/vendor/sweet-alert/sweetalert2.all.min.js"></script>
 <script src="<?=base_url();?>assets/vendor/select2/js/select2.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="<?=base_url();?>assets/js/demo/datatables-demo.js"></script>
+<!-- <script src="<?=base_url();?>assets/js/demo/datatables-demo.js"></script> -->
 <script src="<?=base_url();?>assets/js/demo/sweet-alert.js"></script>
 <script>
 $(document).ready(function() {
@@ -45,7 +47,9 @@ $(document).ready(function() {
 })
 
 $(document).ready(function() {
-    $('#example').DataTable();
+	$('#example').DataTable({
+		responsive: true
+	});
 } );
 </script>
 </body>
