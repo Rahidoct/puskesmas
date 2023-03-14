@@ -45,7 +45,7 @@
 	    	<h4 style="text-align: center; padding-right: 50px;">PEMERINTAH KABUPATEN CIREBON<br>DINAS KESEHATAN<br><strong>UPTD PUSKESMAS BUNDER</strong><br>Jalan By Pass Bunder Kecamatan Susukan<br>Email: puskesmasbunder@mail.com   <spans style="padding-left: 40px;">Kode Pos 45166</span></h4>
 	    </div>
         <h3 id=judul>SURAT TUGAS</h3>
-        <P id=nomor>NOMOR : 800/.../PKM-BDR/IX/2022</P>
+        <P id=nomor>NOMOR : <!--<?= $data['no_surat']; ?>--></P>
 
         <p>Yang bertanda tangan dibawah ini, Kepala UPTD Puskesmas Bunder Kecamatan Susukan Kabupaten Cirebon.</p>
 
@@ -78,26 +78,26 @@
             <tr>
                 <td style="width: 30%;">Nama</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;">Rahmat Hidayat</td>
+                <td style="width: 65%;"><!--<?= $data['id_karyawan']; ?>--></td>
             </tr>
             <tr>
                 <td style="width: 30%;">Tempat, tanggal lahir</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;">Cirebon, 13 Oktober 1996</td>
+                <td style="width: 65%;"><!--<?= $data['ttl']; ?>--></td>
             </tr>
             <tr>
                 <td style="width: 30%; vertical-align: top;">Pendidikan</td>
                 <td style="width: 5%; vertical-align: top;">:</td>
-                <td style="width: 65%;">SMK, Tahun 2015</td>
+                <td style="width: 65%;"><!--<?= $data['pendidikan']; ?>--></td>
             </tr>
             <tr>
                 <td style="width: 30%;">Jabatan</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;">Pelaksana</td>
+                <td style="width: 65%;"><!--<?= $data['id_posisi']; ?>--></td>
             </tr>
         </table>
 
-        <p>Untuk melaksanakan tugas Pokok sebagai Supir Ambulance dan Penanggung Jawab Mobil Ambulance  di UPTD Puskesmas Bunder Dinas Kesehatan Kabupaten Cirebon. Terhitung Mulai Tanggal : 01 September 2022 sampai dengan 31 Desember 2022.</p>
+        <p>Untuk melaksanakan tugas Pokok sebagai <!--<?= $data['tugas']; ?>--> di UPTD Puskesmas Bunder Dinas Kesehatan Kabupaten Cirebon. Terhitung Mulai Tanggal : <!--<?= $data['tgl_kontrak']; ?>--> sampai dengan <!--<?= $data['tgl_selesai']; ?>-->.</p>
         <p>Selanjutnya selama melaksanakan tugas sehari-hari agar taat dan patuh pada segala peraturan atau perintah pimpinan.</p>
         <p>
         	Demikian surat tugas ini dibuat dan diberikan kepada yang bersangkutan untuk diketahui serta dilaksanakan dengan penuh tanggung jawab.
@@ -105,7 +105,7 @@
 
         <table style="width: 100%">
             <tr style="width: 50%;">
-                <td style="width: 50%; text-align: center; float: right;">Cirebon, 20 Januari 2022</td>
+                <td style="width: 50%; text-align: center; float: right;">Cirebon, <!--<?= $data['tanggal']; ?>--></td>
                 <td style="width: 50%; text-align: center; float: right;">Mengetahui,</td>
                 <td style="width: 50%; text-align: center; float: right; padding-bottom: 70px;">Kepala UPTD Puskesmas Bunder</td>
                 <td style="width: 50%; text-align: center; float: right;"><strong>H. Zaenal Abidin Ali, S.Kep.,Ners</strong></td>
@@ -114,5 +114,5 @@
         </table>
     </div>
 </body>
-
+<script>window.print();</script>
 </html>
