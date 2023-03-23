@@ -213,7 +213,7 @@
       });
     } else {
       // Jika user tidak memiliki koneksi
-      document.getElementById("status").innerHTML = "Periksa ulang koneksi internet anda..!!"
+      document.getElementById("status").innerHTML = "Sepertinya anda tidak memiliki koneksi internet..!!"
       $(".vid").children().remove()
     }
   </script>

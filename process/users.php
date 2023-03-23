@@ -10,25 +10,26 @@ if(isset($_POST['tambah'])){
     $email = $_POST['email'];
     $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
     $level = $_POST['level'];
-    // Parsing Data Untuk Table Pegawai
-    $nama = $_POST['nama'];
-    $nip = $_POST['nip'];
-    $no_hp = $_POST['no_hp'];
-    $alamat = $_POST['alamat'];
-    $umur = $_POST['umur'];
-    $mulai_kerja = $_POST['mulai_kerja'];
-    $posisi = $_POST['posisi'];
-    $gaji = $_POST['gaji'];
-    $status = $_POST['status'];
 
     // Query untuk tabel users
-    $insert_users = mysqli_query($con, "INSERT INTO users (email, username, password, level) VALUES ('$email','$username','$password','$level')");
+    $insert_users = mysqli_query($con, "INSERT INTO users (username, password, email, level) VALUES ('$username', '$password', '$email', '$level')");
 
     if($insert_users){
-        $id = mysqli_insert_id($con); // Mendapatkan ID terakhir yang dimasukkan ke tabel utama
+        $id_users = mysqli_insert_id($con); // Mendapatkan ID terakhir yang dimasukkan ke tabel users
+
+        // Parsing Data Untuk Table Pegawai
+        $nama = $_POST['nama'];
+        $nip = $_POST['nip'];
+        $no_hp = $_POST['no_hp'];
+        $alamat = $_POST['alamat'];
+        $umur = $_POST['umur'];
+        $mulai_kerja = $_POST['mulai_kerja'];
+        $posisi = $_POST['posisi'];
+        $gaji = $_POST['gaji'];
+        $status = $_POST['status'];
 
         // Query untuk tabel karyawan
-        $insert_karyawan = mysqli_query($con, "INSERT INTO karyawan (id_posisi, id_users, nama, nip, no_hp, alamat, umur, mulai_kerja, gaji, status_pegawai, tentang) VALUES ('$posisi','$id','$nama','$nip','$no_hp','$alamat','$umur','$mulai_kerja','$gaji','$status', '')");
+        $insert_karyawan = mysqli_query($con, "INSERT INTO karyawan (id_posisi, id_users, nama, nip, no_hp, alamat, umur, mulai_kerja, gaji, status_pegawai) VALUES ('$posisi','$id_users','$nama','$nip','$no_hp','$alamat','$umur','$mulai_kerja','$gaji','$status')");
 
         // Register user
         if($insert_karyawan){
@@ -39,7 +40,7 @@ if(isset($_POST['tambah'])){
     }else{
         $error = 'Username atau email telah terdaftar!';
     }
-    
+
     $_SESSION['success'] = isset($success) ? $success : '';
     $_SESSION['error'] = isset($error) ? $error : '';
     header('Location:../?beranda_admin');
@@ -47,33 +48,36 @@ if(isset($_POST['tambah'])){
 
 if(isset($_POST['ubah'])){
     // Parsing Data Untuk Table User
-    $id = $_POST['id'];
-    $email = $_POST['email'];
-    $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
-    $level = $_POST['level'];
+    $id = $_POST['id_karyawan'];
+    $username = $data['username'];
+    $email = $data['email'];
+    $password = password_hash($data['password'],PASSWORD_DEFAULT);
+    $level = $data['level'];
     // Parsing Data Untuk Table Pegawai
-    $nama = $_POST['nama'];
-    $nip = $_POST['nip'];
-    $no_hp = $_POST['no_hp'];
-    $alamat = $_POST['alamat'];
-    $umur = $_POST['umur'];
-    $mulai_kerja = $_POST['mulai_kerja'];
-    $posisi = $_POST['posisi'];
-    $gaji = $_POST['gaji'];
-    $status = $_POST['status'];
+    $nama = $data['nama'];
+    $nip = $data['nip'];
+    $no_hp = $data['no_hp'];
+    $alamat = $data['alamat'];
+    $umur = $data['umur'];
+    $mulai_kerja = $data['mulai_kerja'];
+    $posisi = $data['posisi'];
+    $gaji = $data['gaji'];
+    $status = $data['status'];
+    $foto = $data['foto'];
+    $tentang = $data['tentang'];
 
     // Query untuk tabel users
     if($password!=""){
-        $update_users = mysqli_query($con, "UPDATE users SET email='$email', password='$password', level='$level' WHERE id_users='$id'");
+        $update = mysqli_query($con, "UPDATE users SET username='$username', email='$email', password='$password', level='$level' WHERE id_users='$id_users'");
     }else{
-        $update_users = mysqli_query($con, "UPDATE users SET email='$email', level='$level' WHERE id_users='$id'");
+        $update = mysqli_query($con, "UPDATE users SET email='$email', level='$level' WHERE id_users='$id_users'");
     }
 
-    if($update_users){
+    if($update){
         // Query untuk tabel karyawan
-        $update_karyawan = mysqli_query($con, "UPDATE karyawan SET id_posisi='$posisi', nama='$nama', nip='$nip', no_hp='$no_hp', alamat='$alamat', umur='$umur', mulai_kerja='$mulai_kerja', gaji='$gaji', status_pegawai='$status' WHERE id_users='$id'");
+        $update = mysqli_query($con, "UPDATE karyawan SET id_users='$username', id_posisi='$posisi', nama='$nama', nip='$nip', no_hp='$no_hp', alamat='$alamat', umur='$umur', mulai_kerja='$mulai_kerja', gaji='$gaji', status_pegawai='$status', foto='$foto', tentang='$tentang' WHERE id_karyawan='$id'");
 
-        if($update_karyawan){
+        if($update){
             $success = 'Berhasil mengubah data users';
         }else{
             $error = 'Gagal mengubah data karyawan';

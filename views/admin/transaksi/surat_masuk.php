@@ -96,7 +96,7 @@ function submit(x) {
                                     if (empty($row['file'])) {
                                     echo " - ";
                                     } else { ?>
-                                    <a href="<?=base_url();?>/assets/file/<?=$row['file']?>" target="_blank"> lihat file </a>
+                                    <a href="<?=base_url();?>/assets/file/surat_masuk/<?=$row['file']?>" target="_blank"> lihat file </a>
                                 <?php } ?>
                             </td>
                             <td>

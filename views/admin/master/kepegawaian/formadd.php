@@ -1,43 +1,4 @@
 <?php hakAkses(['admin']) ?>
-<!-- <script>
-function submit(x) {
-    if (x == 'add') {
-        $('[name="username"]').val("");
-        $('[name="nama"]').val("");
-        $('[name="no_hp"]').val("");
-        $('[name="level"]').val("");
-        $('#dataKaryawan .modal-title').html('Form Input Data Pegawai');
-        $('[name="username"]').prop('readonly', false);
-        $('[name="password"]').prop('required', true);
-        $('#passwordHelp').hide();
-        $('[name="ubah"]').hide();
-        $('[name="tambah"]').show();
-    } else {
-        $('#dataKaryawan .modal-title').html('Ubah Data Pegawai');
-        $('[name="username"]').prop('readonly', true);
-        $('[name="password"]').prop('required', false);
-        $('#passwordHelp').show();
-        $('[name="tambah"]').hide();
-        $('[name="ubah"]').show();
-
-        $.ajax({
-            type: "POST",
-            data: {
-                id: x
-            },
-            url: '<?=base_url();?>process/view_user.php',
-            dataType: 'json',
-            success: function(data) {
-                $('[name="id"]').val(data.id_users);
-                $('[name="username"]').val(data.username);
-                $('[name="nama"]').val(data.nama);
-                $('[name="no_hp"]').val(data.no_hp);
-                $('[name="level"]').val(data.level);
-            }
-        });
-    }
-}
-</script> -->
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
@@ -73,7 +34,6 @@ function submit(x) {
                         <div class="form-group">
                             <label>Password</label>
                             <input type="password" class="form-control" name="password" aria-describedby="passwordHelp">
-                            <small id="passwordHelp" class="form-text" style="color:red;">Biarkan kosong jika tidak ingin merubah password</small>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -91,7 +51,7 @@ function submit(x) {
                                 <option value="admin">Kasubag TU</option>
                                 <option value="asset">Pengelolah Aset</option>
                                 <option value="bendahara">Bendahara</option>
-                                <option value="kepala_puskesmas">Kepala Puskesmas</option>
+                                <option value="pimpinan">Kepala Puskesmas</option>
                                 <option value="apoteker">Apoteker</option>
                                 <option value="antrian">Pendaftaran</option>
                                 <option value="rekam_medis">Rekam Medis</option>

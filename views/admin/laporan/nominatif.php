@@ -72,8 +72,8 @@
                                 <td>
                                     <form method="post" action="">
                                         <input type="hidden" name="id" value="<?= $r['id_karyawan'] ?>">
-                                        <input type="hidden" name="status" value="mutasi">
-                                        <input class="btn btn-danger btn-sm" type="submit" name="submitted" value="Mutasi">
+                                        <input type="hidden" name="status" value="Resign">
+                                        <input class="btn btn-danger btn-sm" type="submit" name="submitted" value="Resign">
                                     </form>
                                 </td>
                             </tr>

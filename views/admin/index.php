@@ -132,7 +132,7 @@
                             <th scope="col">Mulai Bekerja</th>
                             <th scope="col">Status Pegawai</th>
                             <th scope="col">Gaji</th>
-                            <th scope="col">Opsi</th>
+                            <th scope="col" style="width: 50px;">Opsi</th>
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
@@ -152,15 +152,24 @@
                                 <td><?= $data['mulai_kerja'] ?></td>
                                 <td><?= $data['status_pegawai'] ?></td>
                                 <td><?= "Rp." . number_format($data['gaji']) ?></td>
-                                <td>
-                                    <small class="btn btn-sm">
-                                        <a href="<?=base_url();?>/process/users.php?act=<?=encrypt('delete');?>&id=<?=encrypt($row['id_users']);?>" class="btn btn-danger btn-icon-split btn-sm btn-hapus">
+                                <td class="row">
+                                    <div class="col-sm-6" title="Ubah">
+                                        <a href="?edit_data_pegawai" class="btn btn-sm btn-primary btn-icon-split" name="ubah">
+                                            <span class="icon text-white">
+                                                <i class="fas fa-edit"></i>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6" title="Resign">
+                                        <a class="btn btn-danger btn-icon-split btn-sm btn-hapus">
+                                            <input type="hidden" name="id" value="<?=$data['id_karyawan']?>">
+                                            <input type="hidden" name="status_pegawai" value="Resign">    
                                             <span class="icon text-white">
                                                 <i class="fas fa-right-from-bracket"></i>
                                             </span>
-                                            <span class="text">Resign</span>
+                                            <!-- <span class="text">Resign</span> -->
                                         </a>
-                                    </small>
+                                    </div>
                                 </td>
                             </tr>
                         <?php

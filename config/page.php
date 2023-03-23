@@ -19,7 +19,7 @@
                 $views = 'views/admin/master/absensi/uabsen.php';
             }else if(isset($_GET['halaman_cetakQR'])){
                 $absensi = $area_absen = true;
-                $views = 'views/admin/master/absensi/cetakqr.php';
+                $views = 'views/admin/laporan/cetakqr.php';
             }
             else if(isset($_GET['logAbsen'])){
                 $views = 'process/logAbsen.php';
@@ -30,24 +30,24 @@
             }
             else if(isset($_GET['form_izin'])){
                 $absensi = $form_izin = true;
-                $views = 'views/admin/master/absensi/form_izin.php';
+                $views = 'views/admin/transaksi/form_izin.php';
             }
             else if(isset($_GET['rekap_absen'])){
                 $rekap_absen = true;
-                $views = 'views/admin/master/absensi/rekap.php';
+                $views = 'views/admin/laporan/rekap.php';
             }
             // menu elektronik arsip surat
             else if(isset($_GET['surat_masuk'])){
                 $data_surat = $surat_masuk = true;
-                $views = 'views/admin/master/E-Arsip/surat_masuk.php';
+                $views = 'views/admin/transaksi/surat_masuk.php';
             }
             else if(isset($_GET['surat_keluar'])){
                 $data_surat = $surat_keluar = true;
-                $views = 'views/admin/master/E-Arsip/surat_keluar.php';
+                $views = 'views/admin/transaksi/surat_keluar.php';
             }
             else if(isset($_GET['dok_kontrak_kerja'])){
                 $data_surat = $kontrak_kerja = true;
-                $views = 'views/admin/master/E-Arsip/kontrak.php';
+                $views = 'views/admin/transaksi/kontrak.php';
             }
             else if(isset($_GET['buat_surat'])){
                 $disposisi = $buat_surat = true;
@@ -68,19 +68,19 @@
             }
             else if(isset($_GET['nominatif_pns'])){
                 $data_karyawan = $nominatif = true;
-                $views = 'views/admin/master/kepegawaian/nominatif.php';
+                $views = 'views/admin/laporan/nominatif.php';
             }
             else if(isset($_GET['nominatif_pppk'])){
                 $data_karyawan = $nominatif = true;
-                $views = 'views/admin/master/kepegawaian/pppk.php';
+                $views = 'views/admin/laporan/pppk.php';
             }
             else if(isset($_GET['nominatif_honorer'])){
                 $data_karyawan = $nominatif = true;
-                $views = 'views/admin/master/kepegawaian/honorer.php';
+                $views = 'views/admin/laporan/honorer.php';
             }
             else if(isset($_GET['pegawai_resign'])){
                 $data_karyawan = $pegawai_resign = true;
-                $views = 'views/admin/master/kepegawaian/resign.php';
+                $views = 'views/admin/laporan/resign.php';
             }
             else if(isset($_GET['form_add_pegawai'])){
                 $kepegawaian = $form_add_pegawai = true;
