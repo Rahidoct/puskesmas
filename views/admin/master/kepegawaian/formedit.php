@@ -10,42 +10,36 @@
             <span aria-hidden="true">×</span>
         </button>
     </div>
-    <?php
-      if(isset($_GET['ubah'])){
-          $id = $_GET['ubah'];
-          $query = mysqli_query($con, "SELECT * FROM karyawan INNER JOIN users ON karyawan.id_users = users.id_users
-                                                             INNER JOIN posisi ON karyawan.id_posisi = posisi.id_posisi 
-                                                             WHERE id_karyawan='$id'") or die(mysqli_error($con));
-          $data = mysqli_fetch_array($query);
-      }
+    <?php 
+    $id = $_GET['id'];
+    $sql = mysqli_query($con, "SELECT * FROM karyawan where id_karyawan = '$id' ");
+    while($data = mysqli_fetch_assoc($sql));
     ?>
     <div class="card mt-3 mb-4 border-bottom-secondary">
         <div class="card-header bg-primary text-white">
         </div>
         <div class="card-body">
-          <form method="POST" id="formedit" action="<?=base_url();?>process/users.php">
+          <form action="process/editusers.php;" method="post">
             <div class="d-sm-flex align-items-center justify-content-between mb-2 border-bottom border-success">
               <h5 class="h4 mb-0 text-gray-800">Ubah Data Pegawai</h5>
             </div>            
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Username</label>
-                        <input type="hidden" name="id_users" class="form-control">
-                        <input type="text" class="form-control" name="username" value="<?= $data['username']; ?>">
+                        <label for="username">Username *</label>
+                        <input type="text" class="form-control" name="username" id="username" value="<?php echo $data['username']; ?>" required>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" name="email" value="<?= $data['email']; ?>">
+                        <label for="email">Email *</label>
+                        <input type="email" class="form-control" name="email" id="email" value="<?php echo $data['email']; ?>" required>
                     </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="nama">Nama Karyawan</label>
-                    <input type="hidden" name="id_karyawan" class="form-control">
-                    <input type="text" class="form-control" id="nama" name="nama" placeholder="nama" value="<?= $data['nama']; ?>">
+                    <input type="text" class="form-control" id="nama" name="nama" placeholder="nama" value="<?php echo $data['nama']; ?>" required>
                     <small class="text-danger">*<span class="text-gray-800">ketik nama dengan gelar</span></small>
                   </div>
                 </div>
@@ -53,7 +47,7 @@
                     <div class="form-group">
                         <label>Hak Akses</label>
                         <select name="level" class="form-control">
-                            <option>--pilih jenis akses--</option>
+                            <option disabled selected>--pilih jenis akses--</option>
                             <option value="user">Pegawai</option>
                             <option value="admin">Kasubag TU</option>
                             <option value="asset">Pengelolah Aset</option>
@@ -71,36 +65,34 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="nip">NIP</label>
-                  <input type="text" class="form-control" id="nip" name="nip" placeholder="ketik nomor nip.." value="<?= $data['nip']; ?>">
+                  <input type="text" class="form-control" id="nip" name="nip" value="<?php echo $data['nip']; ?>">
                   <small class="text-danger">*<span class="text-gray-800">kosongkan jika tidak memiliki NIP</span></small>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="no_hp">No Hp</label>
-                  <input type="number" class="form-control" id="no_hp" name="no_hp"value="<?= $data['no_hp']; ?>">
+                  <input type="number" class="form-control" id="no_hp" name="no_hp"value="<?php echo $data['no_hp']; ?>">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="alamat">Alamat</label>
-                  <textarea name="alamat" class="form-control" cols="30" rows="10"><?= $data['alamat']; ?></textarea>
+                  <textarea name="alamat" class="form-control" cols="30" rows="10"><?php echo $data['alamat']; ?></textarea>
                 </div>
-
               </div>
               <div class="col-md-8">
                 <div class="form-group">
-                  <label for="Mulai Kerja">Mulai Kerja</label>
-                  <input type="date" class="form-control" id="mkerja" name="mkerja" value="<?= $data['mulai_kerja']; ?>">
+                  <label for="mulai_kerja">Mulai Kerja</label>
+                  <input type="date" class="form-control" id="mulai_kerja" name="mulai_kerja" value="<?php echo $data['mulai_kerja']; ?>">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="umur">Umur</label>
-                  <input type="number" class="form-control" id="umur" name="umur" value="<?= $data['umur']; ?>">
+                  <input type="number" class="form-control" id="umur" name="umur" value="<?php echo $data['umur']; ?>">
                 </div>
               </div>
-
               <div class="col-md-7">
                 <div class="form-group">
                   <div class="input-group mb-3">
@@ -108,7 +100,7 @@
                       <label class="input-group-text" for="inputGroupSelect01">Pilih Jabatan</label>
                     </div>
                     <select class="custom-select" name="posisi" id="inputGroupSelect01">
-                      <option selected>--jabatan pegawai--</option>
+                      <option disabled selected>--jabatan pegawai--</option>
                       <?= list_jabatan(); ?>
                     </select>
                   </div>
@@ -121,7 +113,7 @@
                       <label class="input-group-text" for="inputGroupSelect02">Pilih Status</label>
                     </div>
                     <select class="custom-select" name="status" id="inputGroupSelect01">
-                      <option selected>--status pegawai--</option>
+                      <option disabled selected>--status pegawai--</option>
                       <option value="PNS">PNS (Pegawai Negri)</option>
                       <option value="P3K">PPPK</option>
                       <option value="Honorer">Honorer</option>
@@ -133,7 +125,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="gaji">Gaji</label>
-                  <input type="text" class="form-control" id="gaji" name="gaji" placeholder="Gaji" value="<?=$data['gaji']?>">
+                  <input type="text" class="form-control" id="gaji" name="gaji" placeholder="Gaji" value="<?php echo $data['gaji']?>">
                   <small class="text-danger">*<span class="text-gray-800">dilarang menggunakan symbol, gunakan angka saja</span></small>
                 </div>
               </div>

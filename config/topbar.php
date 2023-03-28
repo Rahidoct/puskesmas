@@ -95,7 +95,7 @@
     aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="<?=base_url();?>process/users.php?act=<?=encrypt('ganti_pass');?>" method="post">
+            <form action="<?=base_url();?>process/editusers.php?act=<?=encrypt('ganti_pass');?>" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ganti Password</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">

@@ -75,7 +75,7 @@ $_SESSION['error'] = $error;
             <div class="col-xl-5 col-lg-6 col-md-8">
 
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card bg-light o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="col-lg-12">
