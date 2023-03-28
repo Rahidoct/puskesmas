@@ -1,5 +1,5 @@
 # ERROR APLIKASI
-1. tidak bisa melakukan tambah data, edit data dan hapus data user dimenu admin
+1. tidak bisa melakukan edit data dan hapus data user dimenu admin
 
 # untuk login admin
 username : rahidoct
