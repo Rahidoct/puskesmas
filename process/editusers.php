@@ -2,16 +2,15 @@
 session_start();
 include ('../config/conn.php');
 include ('../config/function.php');
-
-if(decrypt(@$_GET['act'])=='ganti_data' && isset($_POST['ubah'])){
+if(isset($_POST['ubah'])){
     // Parsing Data Untuk Table User
-    $id = $_POST['id'];
+    $id_users = $_POST['id_users'];
     $username = $_POST['username'];
     $email = $_POST['email'];
     $level = $_POST['level'];
-
+    
     // Parsing Data Untuk Table Pegawai
-    $id_karyawan = $_POST['id_karyawan'];
+    $id = $_POST['id'];
     $nama = $_POST['nama'];
     $nip = $_POST['nip'];
     $no_hp = $_POST['no_hp'];
@@ -21,24 +20,14 @@ if(decrypt(@$_GET['act'])=='ganti_data' && isset($_POST['ubah'])){
     $id_posisi = $_POST['posisi'];
     $gaji = $_POST['gaji'];
     $status_pegawai = $_POST['status'];
-    $foto = $_POST['foto'];
-    $tentang = $_POST['tentang'];
-
-    // Query untuk tabel users
-    $update_users = mysqli_query($con, "UPDATE users SET username='$username', email='$email', level='$level' WHERE id_users='$id'");
-
-    if($update_users){
-        // Query untuk tabel karyawan
-        $update_karyawan = mysqli_query($con, "UPDATE karyawan SET id_posisi='$id_posisi', nama='$nama', nip='$nip', no_hp='$no_hp', alamat='$alamat', umur='$umur', mulai_kerja='$mulai_kerja', gaji='$gaji', status_pegawai='$status_pegawai', foto='$foto', tentang='$tentang' WHERE id_karyawan='$id_karyawan'");
-        var_dump($update_users);die;
-        if($update_karyawan){
-            $success = 'Berhasil mengubah data karyawan';
-        }else{
-            $error = 'Gagal mengubah data karyawan';
-        }
+    
+    $update = mysqli_query($con, "UPDATE karyawan SET id_users='$id_users', id_posisi='$id_posisi', nama='$nama', nip='$nip', no_hp='$no_hp', alamat='$alamat', umur='$umur', mulai_kerja='$mulai_kerja', gaji='$gaji', status_pegawai='$status_pegawai' WHERE id_karyawan='$id'");
+    var_dump($update);die;
+    if($update){
+        $success = 'Berhasil mengubah data karyawan';
     }else{
-        $error = 'Gagal mengubah data users';
-    } 
+        $error = 'Gagal mengubah data karyawan';
+    }
     $_SESSION['success'] = isset($success) ? $success : '';
     $_SESSION['error'] = isset($error) ? $error : '';
     header('Location:../?beranda_admin');

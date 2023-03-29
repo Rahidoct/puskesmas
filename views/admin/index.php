@@ -154,7 +154,7 @@
                                 <td><?= "Rp." . number_format($data['gaji']) ?></td>
                                 <td class="row">
                                     <div class="col-sm-6" title="Ubah">
-                                        <a href="?edit_data_pegawai" class="btn btn-sm btn-primary btn-icon-split" name="ubah">
+                                        <a href="?edit_data_pegawai&id=<?=$data['id_karyawan']?>" class="btn btn-sm btn-primary btn-icon-split" name="ubah">
                                             <span class="icon text-white">
                                                 <i class="fas fa-edit"></i>
                                             </span>

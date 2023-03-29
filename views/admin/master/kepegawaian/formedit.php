@@ -12,14 +12,17 @@
     </div>
     <?php 
     $id = $_GET['id'];
-    $sql = mysqli_query($con, "SELECT * FROM karyawan where id_karyawan = '$id' ");
-    while($data = mysqli_fetch_assoc($sql));
+    $sql = mysqli_query($con, "SELECT karyawan.*, users.username, users.email, users.level, users.is_active 
+                               FROM karyawan 
+                               JOIN users ON karyawan.id_users = users.id_users 
+                               WHERE id_karyawan = '$id'");
+    $data = mysqli_fetch_assoc($sql);
     ?>
     <div class="card mt-3 mb-4 border-bottom-secondary">
         <div class="card-header bg-primary text-white">
         </div>
         <div class="card-body">
-          <form action="process/editusers.php;" method="post">
+          <form action="<?=base_url();?>process/editusers.php?id=<?=$data['id_karyawan']?>" method="post">
             <div class="d-sm-flex align-items-center justify-content-between mb-2 border-bottom border-success">
               <h5 class="h4 mb-0 text-gray-800">Ubah Data Pegawai</h5>
             </div>            
@@ -47,16 +50,16 @@
                     <div class="form-group">
                         <label>Hak Akses</label>
                         <select name="level" class="form-control">
-                            <option disabled selected>--pilih jenis akses--</option>
-                            <option value="user">Pegawai</option>
-                            <option value="admin">Kasubag TU</option>
-                            <option value="asset">Pengelolah Aset</option>
-                            <option value="bendahara">Bendahara</option>
-                            <option value="kepala_puskesmas">Kepala Puskesmas</option>
-                            <option value="apoteker">Apoteker</option>
-                            <option value="antrian">Pendaftaran</option>
-                            <option value="rekam_medis">Rekam Medis</option>
-                        </select>
+                          <option disabled selected>--pilih jenis akses--</option>
+                          <option value="user">Pegawai</option>
+                          <option value="admin">Kasubag TU</option>
+                          <option value="asset">Pengelolah Aset</option>
+                          <option value="bendahara">Bendahara</option>
+                          <option value="kepala_puskesmas">Kepala Puskesmas</option>
+                          <option value="apoteker">Apoteker</option>
+                          <option value="antrian">Pendaftaran</option>
+                          <option value="rekam_medis">Rekam Medis</option>
+                      </select>
                         <small class="text-danger">*<span class="text-gray-800">hak akses adalah sistem yang boleh diakses oleh user tersebut</span></small>
                     </div>
                 </div>
@@ -65,7 +68,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="nip">NIP</label>
-                  <input type="text" class="form-control" id="nip" name="nip" value="<?php echo $data['nip']; ?>">
+                  <input type="text" class="form-control" id="nip" name="nip" placeholder="ketik nomor nip.." value="<?php echo $data['nip']; ?>">
                   <small class="text-danger">*<span class="text-gray-800">kosongkan jika tidak memiliki NIP</span></small>
                 </div>
               </div>
