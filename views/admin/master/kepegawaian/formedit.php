@@ -11,25 +11,30 @@
         </button>
     </div>
     <?php 
-    $id = $_GET['id'];
-    $sql = mysqli_query($con, "SELECT karyawan.*, users.username, users.email, users.level, users.is_active 
-                               FROM karyawan 
-                               JOIN users ON karyawan.id_users = users.id_users 
-                               WHERE id_karyawan = '$id'");
-    $data = mysqli_fetch_assoc($sql);
+      if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        // Query untuk mengambil data karyawan berdasarkan ID
+        $sql = mysqli_query($con, "SELECT karyawan.*, users.username, users.email, users.level, users.is_active 
+                                FROM karyawan 
+                                JOIN users ON karyawan.id_users = users.id_users 
+                                WHERE id_karyawan = '$id'");
+        $data = mysqli_fetch_assoc($sql);
+      }
     ?>
     <div class="card mt-3 mb-4 border-bottom-secondary">
         <div class="card-header bg-primary text-white">
         </div>
         <div class="card-body">
-          <form action="<?=base_url();?>process/editusers.php?id=<?=$data['id_karyawan']?>" method="post">
+        <form action="<?=base_url();?>process/editusers.php" method="post">
             <div class="d-sm-flex align-items-center justify-content-between mb-2 border-bottom border-success">
-              <h5 class="h4 mb-0 text-gray-800">Ubah Data Pegawai</h5>
+                <input type="hidden" name="id" class="form-control" value="<?php echo $data['id_karyawan']; ?>">
+                <h5 class="h4 mb-0 text-gray-800">Ubah Data Pegawai</h5>
             </div>            
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="username">Username *</label>
+                        <input type="hidden" name="id_users" class="form-control" value="<?php echo $data['id_users']; ?>">
                         <input type="text" class="form-control" name="username" id="username" value="<?php echo $data['username']; ?>" required>
                     </div>
                 </div>
@@ -118,7 +123,7 @@
                     <select class="custom-select" name="status" id="inputGroupSelect01">
                       <option disabled selected>--status pegawai--</option>
                       <option value="PNS">PNS (Pegawai Negri)</option>
-                      <option value="P3K">PPPK</option>
+                      <option value="PPPK">PPPK</option>
                       <option value="Honorer">Honorer</option>
                       <option value="Resign">Resign</option>
                     </select>
